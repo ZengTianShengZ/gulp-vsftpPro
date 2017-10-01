@@ -7,8 +7,9 @@ var gutil   = require('gulp-util')
 var qn = require('qn')
 var through = require('through2')
 var fs = require('fs')
-
+var prefix = ''
 var qiniu = function (option) {
+    prefix = option.prefix
     var client = qn.create({
         accessKey: option.accessKey,
         secretKey: option.secretKey,
@@ -32,7 +33,7 @@ var qiniu = function (option) {
             this.push(file)
             return cb()
         }
-        uploadFile(file.path, file.relative)
+        uploadFile(file.path, prefix + file.relative)
         this.push(file)
         cb()
     })
