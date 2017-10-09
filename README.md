@@ -2,6 +2,7 @@
 ![](https://img.shields.io/david/cnpm/npminstall.svg?style=flat-square)
 ![](https://img.shields.io/npm/dm/gulp-vsftppro.svg?style=flat-square)
 ![](https://img.shields.io/npm/l/gulp-vsftppro.svg)
+
 该插件是基于`gulp-vsftp`修改的，增加了备份和上传七牛cdn的功能
 
 ## Feature

@@ -1,6 +1,6 @@
 {
   "name": "gulp-vsftppro",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Upload files via SSH",
   "main": "index.js",
   "scripts": {
