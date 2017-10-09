@@ -17,7 +17,7 @@ npm install gulp-vsftppro --save-dev
  let vsftpPro = require('gulp-vsftppro')
 ```
 
-### 上传七牛
+#### 上传七牛
 
 将 dist/static 文件夹下的所有资源上传到七牛
 
@@ -35,7 +35,7 @@ gulp.task('uploadQn', function () {
 })
 ```
 
-### 上传文件服务器
+#### 上传文件服务器
 
 将 dist/index.html 文件上传到服务器
 
@@ -53,7 +53,7 @@ gulp.task('uploadServer', function () {
 })
 ```
 
-### index.html 文件回滚
+#### index.html 文件回滚
 
 将 remotePath 根目录下backupIndexHtml文件夹下的 index.html copy 到 remotePath
 
@@ -74,6 +74,10 @@ gulp.task('index-rollBack', function () {
 
 ### 一般项目发布流程
 
-先将资源文件上传到七牛或其他CDN，在将 .html 文件上传到服务器
+先将资源文件上传到七牛或其他CDN，再将 .html 文件上传到服务器
 
+```
 gulp.task('dev', ['uploadQn', 'uploadServer'])
+```
+
+最后欢迎 `star` 或提 `issues` 或 `PR` ，一起来完善插件👏👏👏
