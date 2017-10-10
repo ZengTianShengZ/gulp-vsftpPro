@@ -23,12 +23,13 @@ gulp.task('uploadQn', function () {
  * 上传文件服务器
  */
 gulp.task('uploadServer', function () {
-    return gulp.src('./dist/index.html').pipe(vsftpPro.server({
+    return gulp.src('./dist/**').pipe(vsftpPro.server({
         remotePath: '*******', //上传远程服务器的文件路径
         host: '*******',       // 服务器 ip
         user: '*******',
         pass: '*******',
         cleanFiles: false,     // 是否清空 remotePath 下的资源文件
+        uploadIndexHtml: false, // 是否上传 remotePath 下的 index.html,默认 true
         backupIndexHtml: true, // 是否备份 remotePath 下的 index.html
         port: 22
     }))

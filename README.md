@@ -44,10 +44,28 @@ gulp.task('uploadQn', function () {
 
 #### 上传文件服务器
 
+将 dist/ 下的文件上传到服务器，除 dist/index.html 外
+
+```
+gulp.task('uploadDist', function () {
+    return gulp.src('./dist/**').pipe(vsftpPro.server({
+        remotePath: '*******', //上传远程服务器的文件路径
+        host: '*******',       // 服务器 ip
+        user: '*******',
+        pass: '*******',
+        cleanFiles: false,     // 是否清空 remotePath 下的资源文件
+        uploadIndexHtml: false, // 是否上传 remotePath 下的 index.html,默认 true
+        port: 22
+    }))
+})
+```
+
+#### 上传文件服务器
+
 将 dist/index.html 文件上传到服务器
 
 ```
-gulp.task('uploadServer', function () {
+gulp.task('uploadHtml', function () {
     return gulp.src('./dist/index.html').pipe(vsftpPro.server({
         remotePath: '*******', //上传远程服务器的文件路径
         host: '*******',       // 服务器 ip
@@ -84,7 +102,13 @@ gulp.task('index-rollBack', function () {
 先将资源文件上传到七牛或其他CDN，再将 .html 文件上传到服务器
 
 ```
-gulp.task('dev', ['uploadQn', 'uploadServer'])
+gulp.task('dev', ['uploadQn', 'uploadHtml'])
+```
+
+或 先将资源文件上传到服务器，接着再传 .html 文件
+
+```
+gulp.task('dev', ['uploadDist', 'uploadHtml'])
 ```
 
 最后欢迎 `star` 或提 `issues` 或 `PR` ，一起来完善插件👏👏👏

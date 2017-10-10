@@ -26,6 +26,12 @@ module.exports = function (options) {
     var homePath = options.cleanFiles ? remotePath : '';
     var remotePlatform = options.remotePlatform || 'unix';
     var backupIndexHtml = options.backupIndexHtml || false;
+    var uploadIndexHtml ;
+    if (options.uploadIndexHtml === undefined) {
+        uploadIndexHtml = true
+    } else {
+        uploadIndexHtml = options.uploadIndexHtml
+    }
 
     var authFilePath = options.authFile || '.ftppass';
     var authFile = path.join('./', authFilePath);
@@ -214,6 +220,12 @@ module.exports = function (options) {
         if (file.isNull()) {
             this.push(file);
             return cb();
+        }
+        // 是否上传 remotePath 下的 index.html,默认 true
+        if (!uploadIndexHtml) {
+            if (file.relative === 'index.html') {
+                return cb();
+            }
         }
         var finalRemotePath = normalizePath(path.join(remotePath, file.relative));
         pool.call(this, finalRemotePath, function (sftp) {
