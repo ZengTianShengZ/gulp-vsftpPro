@@ -3,8 +3,9 @@
  * @author: zengtiansheng
  * @update: 2017/10/2
  */
-let gulp = require('gulp')
-let vsftpPro = require('../index.js')
+const gulp = require('gulp')
+const gulpSequence = require('gulp-sequence')
+const vsftpPro = require('../index.js')
 
 /**
  * 上传七牛
@@ -50,4 +51,4 @@ gulp.task('index-rollBack', function () {
     })
 })
 
-gulp.task('dev', ['uploadQn', 'uploadServer'])
+gulp.task('upload', gulpSequence('uploadQn', 'uploadServer'))

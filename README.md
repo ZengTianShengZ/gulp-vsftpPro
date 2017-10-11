@@ -21,7 +21,7 @@ npm install gulp-vsftppro --save-dev
 
 ## Usage
 ```
- let vsftpPro = require('gulp-vsftppro')
+ const vsftpPro = require('gulp-vsftppro')
 ```
 
 #### 上传七牛
@@ -102,13 +102,14 @@ gulp.task('index-rollBack', function () {
 先将资源文件上传到七牛或其他CDN，再将 .html 文件上传到服务器
 
 ```
-gulp.task('dev', ['uploadQn', 'uploadHtml'])
+gulp.task('upload', gulpSequence('uploadQn', 'uploadHtml'))
+
 ```
 
 或 先将资源文件上传到服务器，接着再传 .html 文件
 
 ```
-gulp.task('dev', ['uploadDist', 'uploadHtml'])
+gulp.task('upload', gulpSequence('uploadDist', 'uploadHtml'))
 ```
 
 最后欢迎 `star` 或提 `issues` 或 `PR` ，一起来完善插件👏👏👏

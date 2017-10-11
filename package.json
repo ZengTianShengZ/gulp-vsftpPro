@@ -25,6 +25,7 @@
     "through2": "~0.4.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-sequence": "^0.4.6"
   }
 }
