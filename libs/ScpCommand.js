@@ -4,7 +4,7 @@
  * @update: 2017/9/30
  */
 let log = require('./consoleLog.js')
-let SSH2 = require('SSH2')
+let SSH2 = require('ssh2')
 let con = new SSH2()
 
 let hostPath = ''
